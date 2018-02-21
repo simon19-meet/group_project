@@ -41,10 +41,10 @@ class Player(Turtle):
         self.fd(self.dy)
 
 
-player=Player(-200,0,0,5,"green")
-turtle.onkeypress(player.up,UP_ARROW)
-turtle.onkeypress(player.down,DOWN_ARROW)
-turtle.listen()
+##player=Player(-200,0,0,5,"green")
+##turtle.onkeypress(player.up,UP_ARROW)
+##turtle.onkeypress(player.down,DOWN_ARROW)
+##turtle.listen()
 
 
 
