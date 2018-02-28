@@ -63,8 +63,8 @@ for i in range(NUMBER_OF_BALLS):
 	radius = random.randint(MINIMUM_BALL_RADIUS, MAXIMUM_BALL_RADIUS)
 	color = (random.random(), random.random(), random.random())
 	s = "theway2.gif"
-	target = Ball(x,y,dx,dy,radius,s,color)
-	BALLS.append(target)
+	uk = Ball(x,y,dx,dy,radius,s,color)
+	BALLS.append(uk)
 
 def move_all_balls():
 	for i in BALLS:
@@ -76,4 +76,4 @@ while RUNNING:
 	time.sleep(SLEEP)
 turtle.mainloop()
 
-#If I'm writing a comment will people notice that I'm not working? apperantly! is that ow you spell apperently? 
+#If I'm writing a comment will people notice that I'm not working? apperantly! is that ow you spell apperently? apparently it's spelled apparently. 
