@@ -62,7 +62,7 @@ for i in range(NUMBER_OF_BALLS):
 		dy = random.randint(MINIMUM_BALL_DY, MAXIMUM_BALL_DY)
 	radius = random.randint(MINIMUM_BALL_RADIUS, MAXIMUM_BALL_RADIUS)
 	color = (random.random(), random.random(), random.random())
-	n = randon.randit(0,1)
+	n = random.randint(0,1)
 	s = 0
 	if n == 0:
 		s = "deutschland.gif"
@@ -83,8 +83,8 @@ while RUNNING:
 	turtle.getscreen().update()
 	time.sleep(SLEEP)
 turtle.mainloop()
-<<<<<<< HEAD
-=======
-
-#If I'm writing a comment will people notice that I'm not working? apperantly! is that ow you spell apperently? 
->>>>>>> 69b22f7948991f712c26859936561e646aa5ddd7
+##<<<<<< HEAD
+##=======
+##
+###If I'm writing a comment will people notice that I'm not working? apperantly! is that ow you spell apperently? 
+##>>>>>>> 69b22f7948991f712c26859936561e646aa5ddd7

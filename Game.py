@@ -2,6 +2,7 @@ from turtle import *
 import turtle
 from player import *
 from bullet import *
+from target import *
 
 turtle.tracer(1, 0)
 
