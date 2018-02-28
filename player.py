@@ -1,18 +1,17 @@
 from turtle import *
 import turtle
-
-
+from bullet import Bullet
 
 
 
 UP_ARROW="Up"
 DOWN_ARROW="Down"
-
+list_of_bullets=[]
 
 turtle.register_shape("12970175675.gif")
 
 class Player(Turtle):
-    def __init__(self,x,y,dx,dy,color):
+    def __init__(self,x,y,dx,dy,color,list_of_bullets):
         Turtle.__init__(self)
         self.pu()
         self.x=x
@@ -25,7 +24,8 @@ class Player(Turtle):
         self.shape("12970175675.gif")
 
     def up(self):
-        
+        for bullet in list_of_bullets:
+            bullet.up()
         current_x = self.xcor()
         #new_x = current_x + self.dx
         current_y = self.ycor()
@@ -34,6 +34,8 @@ class Player(Turtle):
         
         
     def down(self):
+        for bullet in list_of_bullets:
+            bullet.down()
         current_x = self.xcor()
         #new_x = current_x + self.dx
         current_y = self.ycor()

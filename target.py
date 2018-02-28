@@ -65,7 +65,7 @@ for i in range(NUMBER_OF_BALLS):
 	color = (random.random(), random.random(), random.random())
 	n = randon.randit(0,1)
 	s = 0
-	if n = 0:
+	if n == 0:
 		s = "deutschland.gif"
 	else:
 		s = "deutschland.gif"

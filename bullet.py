@@ -1,9 +1,7 @@
 from turtle import *
 import turtle
-from player import Player
 
 
-player=Player(-200,0,5,5,"green")
 
 UP_ARROW="Up"
 DOWN_ARROW="Down"
@@ -21,6 +19,7 @@ class Bullet(Turtle):
         self.shape("square")
         self.color(color)
         self.shape("circle")
+        self.s_point = [-200,0]
 
     def up(self):
         
@@ -29,6 +28,8 @@ class Bullet(Turtle):
         current_y = self.ycor()
         self.setheading(90)
         self.fd(self.dy)
+        self.s_point[1]= self.s_point[1]+self.dy
+        print(self.s_point[1])
         
         
     def down(self):
@@ -37,9 +38,10 @@ class Bullet(Turtle):
         current_y = self.ycor()
         self.setheading(270)
         self.fd(self.dy)
+        self.s_point[1]= self.s_point[1]-self.dy
         
     def shoot(self):
-        self.goto(player.pos())
+        self.goto(self.s_point)
         current_y=self.ycor()
         current_x=self.xcor()
         self.showturtle()
