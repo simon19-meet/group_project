@@ -1,15 +1,13 @@
 from turtle import *
 import turtle
+from player import Player
 
 
-
-
+player=Player(-200,0,5,5,"green")
 
 UP_ARROW="Up"
 DOWN_ARROW="Down"
 SPACEBAR="space"
-
-
 
 class Bullet(Turtle):
     def __init__(self,x,y,dx,dy,color):
@@ -41,17 +39,20 @@ class Bullet(Turtle):
         self.fd(self.dy)
         
     def shoot(self):
+        self.goto(player.pos())
         current_y=self.ycor()
         current_x=self.xcor()
+        self.showturtle()
+        self.setheading(0)
         while True:
             self.fd(self.dx)
             
         
 
-bullet=Bullet(-200,0,5,5,"black")
-turtle.onkeypress(bullet.up,UP_ARROW)
-turtle.onkeypress(bullet.down,DOWN_ARROW)
-turtle.onkey(bullet.shoot,SPACEBAR)
-turtle.listen()
+##bullet=Bullet(-200,0,5,5,"black")
+##turtle.onkeypress(bullet.up,UP_ARROW)
+##turtle.onkeypress(bullet.down,DOWN_ARROW)
+##turtle.onkey(bullet.shoot,SPACEBAR)
+##turtle.listen()
 
 
