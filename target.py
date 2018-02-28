@@ -76,4 +76,3 @@ while RUNNING:
 	time.sleep(SLEEP)
 turtle.mainloop()
 
-#If I'm writing a comment will people notice that I'm not working? apperantly! is that ow you spell apperently? apparently it's spelled apparently. 
