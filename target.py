@@ -71,8 +71,8 @@ for i in range(NUMBER_OF_BALLS):
 	sphere = Ball(x,y,dx,dy,radius,s,color)
 	BALLS.append(sphere)
 	s = "theway2.gif"
-	target = Ball(x,y,dx,dy,radius,s,color)
-	BALLS.append(target)
+	uk = Ball(x,y,dx,dy,radius,s,color)
+	BALLS.append(uk)
 
 def move_all_balls():
 	for i in BALLS:
@@ -83,8 +83,12 @@ while RUNNING:
 	turtle.getscreen().update()
 	time.sleep(SLEEP)
 turtle.mainloop()
+<<<<<<< HEAD
 ##<<<<<< HEAD
 ##=======
 ##
 ###If I'm writing a comment will people notice that I'm not working? apperantly! is that ow you spell apperently? 
 ##>>>>>>> 69b22f7948991f712c26859936561e646aa5ddd7
+=======
+
+>>>>>>> c64da8c1caa6adc9e1a16669e1e84739ffed96ca
