@@ -4,8 +4,7 @@ import random
 import time
 import math
 
-turtle.register_shape("gstq.gif")
-turtle.register_shape("deutschland.gif")
+turtle.register_shape("theway2.gif")
 
 class Ball(Turtle):
 	def __init__(self,x,y,dx,dy,r,shape,color):
@@ -42,8 +41,8 @@ SLEEP = 0.05
 SCREEN_WIDTH = int(turtle.getcanvas().winfo_width()/2)
 SCREEN_HEIGHT = int(turtle.getcanvas().winfo_height()/2)
 
-NUMBER_OF_BALLS = 8
-MINIMUM_BALL_RADIUS = 20
+NUMBER_OF_BALLS = 10
+MINIMUM_BALL_RADIUS = 30
 MAXIMUM_BALL_RADIUS = 30
 MINIMUM_BALL_DX = -5
 MAXIMUM_BALL_DX = 5
@@ -71,6 +70,9 @@ for i in range(NUMBER_OF_BALLS):
 		s = "deutschland.gif"
 	sphere = Ball(x,y,dx,dy,radius,s,color)
 	BALLS.append(sphere)
+	s = "theway2.gif"
+	target = Ball(x,y,dx,dy,radius,s,color)
+	BALLS.append(target)
 
 def move_all_balls():
 	for i in BALLS:
@@ -81,3 +83,8 @@ while RUNNING:
 	turtle.getscreen().update()
 	time.sleep(SLEEP)
 turtle.mainloop()
+<<<<<<< HEAD
+=======
+
+#If I'm writing a comment will people notice that I'm not working? apperantly! is that ow you spell apperently? 
+>>>>>>> 69b22f7948991f712c26859936561e646aa5ddd7
