@@ -62,14 +62,6 @@ for i in range(NUMBER_OF_BALLS):
 		dy = random.randint(MINIMUM_BALL_DY, MAXIMUM_BALL_DY)
 	radius = random.randint(MINIMUM_BALL_RADIUS, MAXIMUM_BALL_RADIUS)
 	color = (random.random(), random.random(), random.random())
-	n = randon.randit(0,1)
-	s = 0
-	if n == 0:
-		s = "deutschland.gif"
-	else:
-		s = "deutschland.gif"
-	sphere = Ball(x,y,dx,dy,radius,s,color)
-	BALLS.append(sphere)
 	s = "theway2.gif"
 	uk = Ball(x,y,dx,dy,radius,s,color)
 	BALLS.append(uk)
@@ -84,3 +76,4 @@ while RUNNING:
 	time.sleep(SLEEP)
 turtle.mainloop()
 
+#If I'm writing a comment will people notice that I'm not working? apperantly! is that ow you spell apperently? apparently it's spelled apparently. 
