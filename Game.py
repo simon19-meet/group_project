@@ -2,19 +2,32 @@ from turtle import *
 import turtle
 from player import *
 from bullet import *
-from target import *
+from target import Ball
+import random
+import time
 
-turtle.tracer(1, 0)
+turtle.tracer(1,0)
+SLEEP=0.05
+SCREEN_WIDTH=int(turtle.getcanvas().winfo_width()/2)
+SCREEN_HEIGHT=int(turtle.getcanvas().winfo_height()/2)
 
-SCREEN_WIDTH=turtle.getcanvas().winfo_width()/2
-SCREEN_HEIGHT=turtle.getcanvas().winfo_height()/2
-
-Running=True
+RUNNING=True
 UP_ARROW="Up"
 DOWN_ARROW="Down"
 SPACEBAR="space"
 c=0
+score=0
+level=1
 bullets=[]
+NUMBER_OF_BALLS = 10
+MINIMUM_BALL_RADIUS = 30
+MAXIMUM_BALL_RADIUS = 30
+MINIMUM_BALL_DX = -5
+MAXIMUM_BALL_DX = 5
+MINIMUM_BALL_DY = -5
+MAXIMUM_BALL_DY = 5
+
+BALLS = []
 
     
 
@@ -31,16 +44,38 @@ turtle.hideturtle()
 turtle.pu()
 
 turtle.goto(-SCREEN_WIDTH, SCREEN_HEIGHT)
-turtle.write("Score: ",font=("David",20,"normal"))
+turtle.write("Score: "+str(score),font=("David",20,"normal"))
 turtle.goto(0, SCREEN_HEIGHT)
-turtle.write("Time: ",font=("David",20,"normal"))
+turtle.write("Level: "+str(level),font=("David",20,"normal"))
+
+for i in range(NUMBER_OF_BALLS):
+	x = random.randint(int(SCREEN_WIDTH-SCREEN_WIDTH + MAXIMUM_BALL_RADIUS), int(SCREEN_WIDTH - MAXIMUM_BALL_RADIUS))
+	y = random.randint(int(-SCREEN_HEIGHT + MAXIMUM_BALL_RADIUS), int(SCREEN_HEIGHT - MAXIMUM_BALL_RADIUS))
+	dx = random.randint(MINIMUM_BALL_DX, MAXIMUM_BALL_DX)
+	while dx == 0:
+		dx = random.randint(MINIMUM_BALL_DX, MAXIMUM_BALL_DX)
+
+	dy = random.randint(MINIMUM_BALL_DY, MAXIMUM_BALL_DY)
+	while dy ==0:
+		dy = random.randint(MINIMUM_BALL_DY, MAXIMUM_BALL_DY)
+	radius = random.randint(MINIMUM_BALL_RADIUS, MAXIMUM_BALL_RADIUS)
+	color = (random.random(), random.random(), random.random())
+	s = "theway2.gif"
+	uk = Ball(x,y,dx,dy,radius,s,color)
+	BALLS.append(uk)
+
+def move_all_balls():
+	for i in BALLS:
+		i.move(SCREEN_WIDTH, SCREEN_HEIGHT)
 
 def shoot_last():
+    
     if len(bullets) != 0:
         b = bullets.pop()
         b.shoot()
     else:
-        turtle.write("Game over!")
+        turtle.goto(0,0)
+        turtle.write("Game over!",font=("David",20,"normal"),align='center')
     
 def move_up():
     global player
@@ -65,12 +100,19 @@ def move_down():
     for b in bullets:
         b.hideturtle()
         b.goto(player.pos())
-    
-
-    
-    
+        
 turtle.onkeypress(move_up,UP_ARROW)
 turtle.onkeypress(move_down,DOWN_ARROW)
-turtle.onkeypress(shoot_last,SPACEBAR)
+
 turtle.listen()
-turtle.listen()
+while RUNNING:
+    move_all_balls()
+    turtle.onkeypress(shoot_last,SPACEBAR)
+    turtle.getscreen().update()
+    time.sleep(SLEEP)
+    if len(bullets)==0:
+        RUNNING = False
+turtle.mainloop()
+    
+    
+
