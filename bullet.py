@@ -29,7 +29,7 @@ class Bullet(Turtle):
         self.setheading(90)
         self.fd(self.dy)
         self.s_point[1]= self.s_point[1]+self.dy
-        print(self.s_point[1])
+        #print(self.s_point[1])
         
         
     def down(self):
@@ -46,8 +46,9 @@ class Bullet(Turtle):
         current_x=self.xcor()
         self.showturtle()
         self.setheading(0)
-        while True:
+        for i in range(200):
             self.fd(self.dx)
+        self.ht()
             
         
 

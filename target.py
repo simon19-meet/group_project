@@ -34,45 +34,46 @@ class Ball(Turtle):
 			self.dy = -self.dy
 			self.clear()
 
-turtle.tracer(0)
-turtle.hideturtle()
-RUNNING = True
-SLEEP = 0.05
-SCREEN_WIDTH = int(turtle.getcanvas().winfo_width()/2)
-SCREEN_HEIGHT = int(turtle.getcanvas().winfo_height()/2)
+##turtle.tracer(0)
+##turtle.hideturtle()
+##RUNNING = True
+##SLEEP = 0.05
+##SCREEN_WIDTH = int(turtle.getcanvas().winfo_width()/2)
+##SCREEN_HEIGHT = int(turtle.getcanvas().winfo_height()/2)
+##
+##NUMBER_OF_BALLS = 10
+##MINIMUM_BALL_RADIUS = 30
+##MAXIMUM_BALL_RADIUS = 30
+##MINIMUM_BALL_DX = -5
+##MAXIMUM_BALL_DX = 5
+##MINIMUM_BALL_DY = -5
+##MAXIMUM_BALL_DY = 5
+##
+##BALLS = []
+##for i in range(NUMBER_OF_BALLS):
+##	x = random.randint(int(SCREEN_WIDTH-SCREEN_WIDTH + MAXIMUM_BALL_RADIUS), int(SCREEN_WIDTH - MAXIMUM_BALL_RADIUS))
+##	y = random.randint(int(-SCREEN_HEIGHT + MAXIMUM_BALL_RADIUS), int(SCREEN_HEIGHT - MAXIMUM_BALL_RADIUS))
+##	dx = random.randint(MINIMUM_BALL_DX, MAXIMUM_BALL_DX)
+##	while dx == 0:
+##		dx = random.randint(MINIMUM_BALL_DX, MAXIMUM_BALL_DX)
+##
+##	dy = random.randint(MINIMUM_BALL_DY, MAXIMUM_BALL_DY)
+##	while dy ==0:
+##		dy = random.randint(MINIMUM_BALL_DY, MAXIMUM_BALL_DY)
+##	radius = random.randint(MINIMUM_BALL_RADIUS, MAXIMUM_BALL_RADIUS)
+##	color = (random.random(), random.random(), random.random())
+##	s = "theway2.gif"
+##	uk = Ball(x,y,dx,dy,radius,s,color)
+##	BALLS.append(uk)
+##
+##def move_all_balls():
+##	for i in BALLS:
+##		i.move(SCREEN_WIDTH, SCREEN_HEIGHT)
+##
+##while RUNNING:
+##	move_all_balls()
+##	turtle.getscreen().update()
+##	time.sleep(SLEEP)
+##turtle.mainloop()
 
-NUMBER_OF_BALLS = 10
-MINIMUM_BALL_RADIUS = 30
-MAXIMUM_BALL_RADIUS = 30
-MINIMUM_BALL_DX = -5
-MAXIMUM_BALL_DX = 5
-MINIMUM_BALL_DY = -5
-MAXIMUM_BALL_DY = 5
-
-BALLS = []
-for i in range(NUMBER_OF_BALLS):
-	x = random.randint(int(SCREEN_WIDTH-SCREEN_WIDTH + MAXIMUM_BALL_RADIUS), int(SCREEN_WIDTH - MAXIMUM_BALL_RADIUS))
-	y = random.randint(int(-SCREEN_HEIGHT + MAXIMUM_BALL_RADIUS), int(SCREEN_HEIGHT - MAXIMUM_BALL_RADIUS))
-	dx = random.randint(MINIMUM_BALL_DX, MAXIMUM_BALL_DX)
-	while dx == 0:
-		dx = random.randint(MINIMUM_BALL_DX, MAXIMUM_BALL_DX)
-
-	dy = random.randint(MINIMUM_BALL_DY, MAXIMUM_BALL_DY)
-	while dy ==0:
-		dy = random.randint(MINIMUM_BALL_DY, MAXIMUM_BALL_DY)
-	radius = random.randint(MINIMUM_BALL_RADIUS, MAXIMUM_BALL_RADIUS)
-	color = (random.random(), random.random(), random.random())
-	s = "theway2.gif"
-	uk = Ball(x,y,dx,dy,radius,s,color)
-	BALLS.append(uk)
-
-def move_all_balls():
-	for i in BALLS:
-		i.move(SCREEN_WIDTH, SCREEN_HEIGHT)
-
-while RUNNING:
-	move_all_balls()
-	turtle.getscreen().update()
-	time.sleep(SLEEP)
-turtle.mainloop()
 
