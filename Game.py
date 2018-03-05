@@ -5,6 +5,8 @@ from bullet import *
 from target import Ball
 import random
 import time
+import math
+
 
 turtle.tracer(1,0)
 SLEEP=0.05
@@ -37,8 +39,9 @@ for i in range(10):
     y=player.y
     dx=5
     dy=5
+    r=10
     color="black"
-    b=Bullet(x,y,dx,dy,color)
+    b=Bullet(x,y,dx,dy,r,color)
     bullets.append(b)
 turtle.hideturtle()
 turtle.pu()
@@ -63,16 +66,41 @@ for i in range(NUMBER_OF_BALLS):
 	s = "theway2.gif"
 	uk = Ball(x,y,dx,dy,radius,s,color)
 	BALLS.append(uk)
-
+b1=len(bullets)
 def move_all_balls():
 	for i in BALLS:
 		i.move(SCREEN_WIDTH, SCREEN_HEIGHT)
+def collide(b,uk):
+    if b==uk:
+        return False
+    
+    xa=b.xcor()
+    ya=b.ycor()
+
+    xb=uk.xcor()
+    yb=uk.ycor()
+
+    D = math.sqrt(math.pow((xa-xb),2)+math.pow((ya-yb),2))
+    if D<=b.r+uk.r:
+
+        return True
+    else:
+        return False
 
 def shoot_last():
-    
+    global b
     if len(bullets) != 0:
-        b = bullets.pop()
-        b.shoot()
+        bullet = bullets.pop()
+        bullet.goto(bullet.s_point)
+        for i in range(200):
+            for uk in BALLS:
+                if(collide(bullet, uk)):
+                    bullet.ht()
+                    BALLS.remove(uk)
+                    del uk
+                    break
+            bullet.fd(bullet.dx)
+        bullet.shoot()
     else:
         turtle.goto(0,0)
         turtle.write("Game over!",font=("David",20,"normal"),align='center')
@@ -100,16 +128,64 @@ def move_down():
     for b in bullets:
         b.hideturtle()
         b.goto(player.pos())
+
+
+
+
+
+def check_bullet_collision():
+    for b in bullets:
+        for uk in BALLS:
+            #print(b.pos())
+            #print(uk.pos())
+            if(b.xcor()==200):
+                print("hello")
+                b.pop()
+            if collide(b,uk):
+                uk.hideturtle()                
+                uk.pop()
+
+    return True
+
+
+t=30
+##def countdown():
+##    global t
+##    if t>=0:
+##        turtle.clear()
+##        turtle.goto(SCREEN_WIDTH,SCREEN_HEIGHT)
+##        turtle.write("Time: "+str(t), font=("David",20,"normal"))
+##        t-=1
+##        turtle.goto(SCREEN_WIDTH,SCREEN_HEIGHT)
+##    else:
+##        turtle.clear()
+##        turtle.write("Time is up, Game over! ")
+##
+##turtle.ontimer(countdown, 1000)
+##while len(bullets)!=0:
+##    countdown()
+
+    #turtle.goto(0,0)
+    #turtle.write("Game over!",font=("David",20,"normal"),align='center')
+    
+
+    
+
+        
+    
         
 turtle.onkeypress(move_up,UP_ARROW)
 turtle.onkeypress(move_down,DOWN_ARROW)
 
 turtle.listen()
 while RUNNING:
+    
     move_all_balls()
     turtle.onkeypress(shoot_last,SPACEBAR)
     turtle.getscreen().update()
     time.sleep(SLEEP)
+    check_bullet_collision()
+        
     if len(bullets)==0:
         RUNNING = False
 turtle.mainloop()

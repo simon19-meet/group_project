@@ -8,7 +8,7 @@ DOWN_ARROW="Down"
 SPACEBAR="space"
 
 class Bullet(Turtle):
-    def __init__(self,x,y,dx,dy,color):
+    def __init__(self,x,y,dx,dy,r,color):
         Turtle.__init__(self)
         self.pu()
         self.x=x
@@ -16,9 +16,11 @@ class Bullet(Turtle):
         self.goto(x,y)
         self.dx=dx
         self.dy=dy
+        self.r=r
         self.shape("square")
         self.color(color)
         self.shape("circle")
+        self.shapesize(r/10)
         self.s_point = [-200,0]
 
     def up(self):
@@ -47,10 +49,11 @@ class Bullet(Turtle):
         self.showturtle()
         self.setheading(0)
         for i in range(200):
+            
             self.fd(self.dx)
         self.ht()
             
-        
+    
 
 ##bullet=Bullet(-200,0,5,5,"black")
 ##turtle.onkeypress(bullet.up,UP_ARROW)
