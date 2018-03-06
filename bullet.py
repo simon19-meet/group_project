@@ -1,6 +1,6 @@
 from turtle import *
 import turtle
-
+from target import *
 
 
 UP_ARROW="Up"
@@ -49,9 +49,18 @@ class Bullet(Turtle):
         self.showturtle()
         self.setheading(0)
         for i in range(200):
-            
             self.fd(self.dx)
+            for ball in BALLS:
+                if self.xcor() >= ball.xcor() - 35 and self.xcor()<= ball.xcor()+35 and self.ycor()>=ball.ycor()-35 and self.ycor()<=ball.ycor()+35:
+                    
+                    print("hi")
+                    ball.ht()
+                    BALLS.remove(ball)
+                    del ball
+                    break
+                    
         self.ht()
+                    
             
     
 
