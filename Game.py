@@ -51,7 +51,7 @@ turtle.hideturtle()
 turtle.pu()
 
 turtle.goto(-SCREEN_WIDTH, SCREEN_HEIGHT)
-turtle.write("Score: "+str(score),font=("David",20,"normal"))
+turtle.write("Score: "+str(Score),font=("David",20,"normal"))
 
 
 ##for i in range(NUMBER_OF_BALLS):
@@ -93,7 +93,7 @@ def move_all_balls():
 def shoot_last():
     global b
     
-    if len(bullets) != 0 or len(BALLS)!=0:
+    if len(bullets) > 0 or len(BALLS)>0:
         bullet = bullets.pop()
         bullet.goto(bullet.s_point)
 ##        for i in range(200):
@@ -192,13 +192,13 @@ time_limit = 30
 while (time.time() - starting_time) < time_limit and RUNNING:
     #countdown()
     
-<<<<<<< HEAD
+
     if(int(time.time() - starting_time) % 1 ==0):
         TIME.clear()
         TIME.goto(SCREEN_WIDTH,SCREEN_HEIGHT)
         TIME.write("Time: "+str(int(time.time() - starting_time)), font=("David",20,"normal"))
-=======
->>>>>>> a4278f2134e54c90c2a4637c097f191963ee1f3b
+
+
     move_all_balls()
     turtle.onkeypress(shoot_last,SPACEBAR)
     turtle.getscreen().update()
@@ -212,5 +212,7 @@ while (time.time() - starting_time) < time_limit and RUNNING:
 turtle.goto(0,0)
 turtle.write("Game over!",font=("David",20,"normal"),align='center')
 turtle.mainloop()
+
+
 
 

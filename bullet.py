@@ -59,7 +59,7 @@ class Bullet(Turtle):
                     turtle.clear()
                     turtle.goto(-SCREEN_WIDTH, SCREEN_HEIGHT)
                     turtle.write("Score: "+str(Score),font=("David",20,"normal"))
-                    print("hi")
+                    
                     ball.ht()
                     #BALLS.remove(ball)
                     x = random.randint(int(SCREEN_WIDTH-SCREEN_WIDTH + MAXIMUM_BALL_RADIUS), int(SCREEN_WIDTH - MAXIMUM_BALL_RADIUS))
