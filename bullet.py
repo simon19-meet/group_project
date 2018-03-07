@@ -7,6 +7,8 @@ UP_ARROW="Up"
 DOWN_ARROW="Down"
 SPACEBAR="space"
 
+Score = 0
+
 class Bullet(Turtle):
     def __init__(self,x,y,dx,dy,r,color):
         Turtle.__init__(self)
@@ -43,6 +45,7 @@ class Bullet(Turtle):
         self.s_point[1]= self.s_point[1]-self.dy
         
     def shoot(self):
+        global Score
         self.goto(self.s_point)
         current_y=self.ycor()
         current_x=self.xcor()
@@ -52,11 +55,17 @@ class Bullet(Turtle):
             self.fd(self.dx)
             for ball in BALLS:
                 if self.xcor() >= ball.xcor() - 35 and self.xcor()<= ball.xcor()+35 and self.ycor()>=ball.ycor()-35 and self.ycor()<=ball.ycor()+35:
-                    
+                    Score = Score+1
+                    turtle.clear()
+                    turtle.goto(-SCREEN_WIDTH, SCREEN_HEIGHT)
+                    turtle.write("Score: "+str(Score),font=("David",20,"normal"))
                     print("hi")
                     ball.ht()
-                    BALLS.remove(ball)
-                    del ball
+                    #BALLS.remove(ball)
+                    x = random.randint(int(SCREEN_WIDTH-SCREEN_WIDTH + MAXIMUM_BALL_RADIUS), int(SCREEN_WIDTH - MAXIMUM_BALL_RADIUS))
+                    y = random.randint(int(-SCREEN_HEIGHT + MAXIMUM_BALL_RADIUS), int(SCREEN_HEIGHT - MAXIMUM_BALL_RADIUS))
+                    ball.goto(x,y)
+                    ball.st()
                     break
                     
         self.ht()
