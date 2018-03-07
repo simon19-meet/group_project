@@ -18,8 +18,7 @@ UP_ARROW="Up"
 DOWN_ARROW="Down"
 SPACEBAR="space"
 c=0
-score=0
-level=1
+
 bullets=[]
 NUMBER_OF_BALLS = 10
 MINIMUM_BALL_RADIUS = 30
@@ -34,7 +33,7 @@ MAXIMUM_BALL_DY = 5
     
 
 player=Player(-200,0,5,5,"green",bullets)
-for i in range(10):
+for i in range(20):
     x=player.x
     y=player.y
     dx=5
@@ -47,9 +46,9 @@ turtle.hideturtle()
 turtle.pu()
 
 turtle.goto(-SCREEN_WIDTH, SCREEN_HEIGHT)
-turtle.write("Score: "+str(score),font=("David",20,"normal"))
-turtle.goto(0, SCREEN_HEIGHT)
-turtle.write("Level: "+str(level),font=("David",20,"normal"))
+turtle.write("Score: "+str(Score),font=("David",20,"normal"))
+##turtle.goto(0, SCREEN_HEIGHT)
+##turtle.write("Level: "+str(level),font=("David",20,"normal"))
 
 ##for i in range(NUMBER_OF_BALLS):
 ##	x = random.randint(int(SCREEN_WIDTH-SCREEN_WIDTH + MAXIMUM_BALL_RADIUS), int(SCREEN_WIDTH - MAXIMUM_BALL_RADIUS))
@@ -149,8 +148,11 @@ def check_bullet_collision():
                 #print("hello")
             if b.pos()==uk.pos():
                 b.pop()
-                uk.hideturtle()                
-                uk.pop()
+##                uk.hideturtle()                
+##               uk.pop()
+                #print("Hit")
+                #uk.goto(20,0)
+                
 
     return True
 
@@ -187,7 +189,7 @@ turtle.onkeypress(move_down,DOWN_ARROW)
 turtle.listen()
 while RUNNING:
     
-    #move_all_balls()
+    move_all_balls()
     turtle.onkeypress(shoot_last,SPACEBAR)
     turtle.getscreen().update()
     time.sleep(SLEEP)
