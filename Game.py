@@ -6,13 +6,18 @@ from target import *
 import random
 import time
 import math
+from threading import Thread
+import sys
 
 
-turtle.tracer(2,0)
+turtle.tracer(1,0)
+
 SLEEP=0.05
 SCREEN_WIDTH=int(turtle.getcanvas().winfo_width()/2)
 SCREEN_HEIGHT=int(turtle.getcanvas().winfo_height()/2)
-
+TIME=Turtle()
+TIME.ht()
+TIME.pu()
 RUNNING=True
 UP_ARROW="Up"
 DOWN_ARROW="Down"
@@ -48,8 +53,7 @@ turtle.pu()
 
 turtle.goto(-SCREEN_WIDTH, SCREEN_HEIGHT)
 turtle.write("Score: "+str(score),font=("David",20,"normal"))
-turtle.goto(0, SCREEN_HEIGHT)
-turtle.write("Level: "+str(level),font=("David",20,"normal"))
+
 
 ##for i in range(NUMBER_OF_BALLS):
 ##	x = random.randint(int(SCREEN_WIDTH-SCREEN_WIDTH + MAXIMUM_BALL_RADIUS), int(SCREEN_WIDTH - MAXIMUM_BALL_RADIUS))
@@ -90,7 +94,7 @@ def move_all_balls():
 def shoot_last():
     global b
     
-    if len(bullets) != 0:
+    if len(bullets) != 0 or len(BALLS)!=0:
         bullet = bullets.pop()
         bullet.goto(bullet.s_point)
 ##        for i in range(200):
@@ -155,26 +159,21 @@ def check_bullet_collision():
     return True
 
 
-t=30
+t=10
 ##def countdown():
 ##    global t
 ##    if t>=0:
 ##        turtle.clear()
 ##        turtle.goto(SCREEN_WIDTH,SCREEN_HEIGHT)
 ##        turtle.write("Time: "+str(t), font=("David",20,"normal"))
+##        time.sleep(1)
 ##        t-=1
 ##        turtle.goto(SCREEN_WIDTH,SCREEN_HEIGHT)
 ##    else:
-##        turtle.clear()
+##        turtle.goto(SCREEN_WIDTH,SCREEN_HEIGHT)
 ##        turtle.write("Time is up, Game over! ")
 ##
 ##turtle.ontimer(countdown, 1000)
-##while len(bullets)!=0:
-##    countdown()
-
-    #turtle.goto(0,0)
-    #turtle.write("Game over!",font=("David",20,"normal"),align='center')
-    
 
     
 
@@ -185,17 +184,28 @@ turtle.onkeypress(move_up,UP_ARROW)
 turtle.onkeypress(move_down,DOWN_ARROW)
 
 turtle.listen()
-while RUNNING:
+starting_time = time.time()
+time_limit = 30
+
+while (time.time() - starting_time) < time_limit and RUNNING:
+    #countdown()
     
-    #move_all_balls()
+    if(int(time.time() - starting_time) % 1 ==0):
+        TIME.clear()
+        TIME.goto(SCREEN_WIDTH,SCREEN_HEIGHT)
+        TIME.write("Time: "+str(int(time.time() - starting_time)), font=("David",20,"normal"))
+    move_all_balls()
     turtle.onkeypress(shoot_last,SPACEBAR)
     turtle.getscreen().update()
     time.sleep(SLEEP)
     #check_bullet_collision()
-        
-    if len(bullets)==0:
+    
+    if len(bullets)==0 or len(BALLS)==0 or int(time.time() - starting_time) % 1 == time_limit:
         RUNNING = False
 #turtle.mainloop()
     
-    
+turtle.goto(0,0)
+turtle.write("Game over!",font=("David",20,"normal"),align='center')
+turtle.mainloop()
+
 
